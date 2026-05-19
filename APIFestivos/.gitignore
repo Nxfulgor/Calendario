@@ -1,0 +1,64 @@
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Build / temp
+# =========================
+dist/
+build/
+tmp/
+temp/
+
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+.env.docker
+
+# Volúmenes de Mongo (IMPORTANTE)
+mongo/
+data/
+db-data/
+
+# Archivos temporales de Docker
+*.pid
+*.seed
+
+# =========================
+# Coverage (tests)
+# =========================
+coverage/
+
+# =========================
+# Misc
+# =========================
+*.local
