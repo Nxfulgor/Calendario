@@ -1,6 +1,6 @@
 services:
   node-api:
-    build: ./APIFestivo
+    build: ./APIFestivos
     container_name: calendario-node
     ports:
       - "3030:3030"
