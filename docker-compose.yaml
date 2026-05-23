@@ -1,14 +1,47 @@
 services:
+  mongo:
+    image: mongo
+    container_name: dockerdbfestivos
+    ports:
+      - "27017:27017"
+    networks:
+      - redcalendario
+
+  postgres:
+    image: postgres
+    container_name: dockerdbcalendario
+    environment:
+      POSTGRES_DB: festivo
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"
+    networks:
+      - redcalendario
+
   node-api:
     build: ./APIFestivos
-    container_name: calendario-node
+    container_name: dockerapifestivos
     ports:
       - "3030:3030"
-    restart: always
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/dockerfestivos
+    depends_on:
+      - mongo
+    networks:
+      - redcalendario
 
   spring-api:
     build: ./festivos-api
-    container_name: calendario-spring
+    container_name: dockerapicalendario
     ports:
       - "8080:8080"
-    restart: always
+    depends_on:
+      - postgres
+      - node-api
+    networks:
+      - redcalendario
+
+networks:
+  redcalendario:
+    driver: bridge
